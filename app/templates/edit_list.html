@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block head %}
+<p class="small-topper"><a href="{{ url_for('index') }}">Lists ></a></p>
+<h3 style="margin-top:0;">Edit: {{ list.name }}</h3>
+{% endblock %}
+
+{% block content %}
+<form class="pure-form pure-form-stacked" action="" method="post">
+  {{ form.hidden_tag() }}
+  {{ form.name.label }} {{ form.name(style="width:100%;") }}
+  <!-- <label for="list-name">List name</label>
+  <input type="text" name="hello" id="list-name" value=""> -->
+  <label class="pure-checkbox">
+    <input name="checklist" type="checkbox" {{ 'checked' if list.checklist }}>
+    Checklist?</label>
+  <label class="pure-checkbox">
+    <input name="private" type="checkbox" {{ "checked" if list.private }}>
+    Private?</label>
+  {{ form.submit(class_="pure-button pure-button-primary") }}
+</form>
+{% endblock %}

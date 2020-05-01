@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block head %}
+<p class="small-topper">
+  <a href="{{ url_for('index') }}">Lists</a>
+   >
+  <a href="{{ url_for('list', id=list.id) }}">{{ list.name }}</a>
+</p>
+<h3 style="margin-top:0;">Edit: {{ item.name }}</h3>
+{% endblock %}
+
+{% block content %}
+<form class="pure-form pure-form-stacked" action="" method="post">
+  {{ form.hidden_tag() }}
+  {{ form.name.label }} {{ form.name(style="width:100%;") }}
+  {{ form.submit(class_="pure-button pure-button-primary") }}
+</form>
+{% endblock %}

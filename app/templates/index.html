@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block head %}
+<h3>Your Lists</h3>
+{% endblock %}
+
+{% block content %}
+<section>
+
+  <form action="" method="post" class="pure-form">
+    <fieldset>
+      <!-- <legend>New list</legend> -->
+      {{ form.hidden_tag() }}
+      {{ form.name(placeholder="New list", style="width:100%;") }}
+      <label><input name="checklist" type="checkbox" checked> Checklist?</label>
+      <label><input name="private" type="checkbox"> Private?</label>
+
+      {{ form.submit(class_="pure-button pure-button-primary") }}
+    </fieldset>
+  </form>
+  <hr>
+</section>
+
+<section>
+  <table class="pure-table pure-table-horizontal">
+  {% for list in lists %}
+  <tr>
+    <td>
+      <a href="{{ url_for('list', id=list.id) }}">{{ list.name }}</a>
+      <span style="float:right;">
+        <a href="{{ url_for('edit_list', id=list.id) }}"><i class="fas fa-pencil-alt" style="padding-right:7px;"></i></a>
+        <span onclick="confirm_del_toggle('{{ list.id }}')"><i class="fas fa-trash"></i></span>
+      </span>
+    </td>
+  </tr>
+  <tr hidden id="{{ list.id }}">
+    <td class="center-text">
+      Are you sure?
+      <a href="{{ url_for('del_list', id=list.id) }}" class="pure-button btn-small btn-delete">DELETE</a>
+      <button class="pure-button btn-small" onclick="confirm_del_toggle('{{ list.id }}')">Cancel</button>
+    </td>
+  </tr>
+  {% endfor %}
+  </table>
+</section>
+{% endblock %}
