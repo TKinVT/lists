@@ -26,8 +26,6 @@ class User(UserMixin, Document):
         self.save()
 
     def check_password(self, password):
-        print(self.password_hash)
-        print(generate_password_hash(password))
         return check_password_hash(self.password_hash, password)
 
 
