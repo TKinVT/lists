@@ -11,10 +11,6 @@ class NewListForm(FlaskForm):
     submit = SubmitField('Add List')
 
     def validate_name(self, name):
-        # print(name.data)
-        # names = [list.name for list in List.objects()]
-        # print(names)
-        # if name.data in names:
         list = List.objects(name=name.data)
         if list.count() > 0:
             raise ValidationError('Name already taken. Choose a new one.')
