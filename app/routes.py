@@ -142,6 +142,15 @@ def del_item(list_id, item_id):
     return redirect(url_for('list', id=list_id))
 
 
+@app.route('/ifttt-grocery', methods=['POST'])
+def ifttt_grocery():
+    item_name = request.form['item'].capitalize()
+    list = List.objects.get(name='Grocery')
+    item = Item(name=item_name, list=list)
+    item.save()
+    return item.name
+
+
 @app.route('/test')
 def test():
     return render_template('test.html')
