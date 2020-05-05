@@ -149,8 +149,3 @@ def ifttt_grocery():
     item = Item(name=item_name, list=list)
     item.save()
     return item.name
-
-
-@app.route('/test')
-def test():
-    return render_template('test.html')
