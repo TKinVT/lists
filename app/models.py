@@ -35,7 +35,7 @@ def load_user(id):
 
 
 class List(Document):
-    name = StringField(required=True, max_length=30, unique=True)
+    name = StringField(required=True, unique=True)
     description = StringField()
     timestamp = DateTimeField(default=datetime.utcnow)
     creator = ReferenceField(User, reverse_delete_rule=NULLIFY)
