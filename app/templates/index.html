@@ -11,7 +11,7 @@
     <fieldset>
       <!-- <legend>New list</legend> -->
       {{ form.hidden_tag() }}
-      {{ form.name(placeholder="New list", style="width:100%;") }}
+      {{ form.name(placeholder="New list", style="width:100%;", autofocus=true) }}
       <label><input name="checklist" type="checkbox" checked> Checklist?</label>
       <label><input name="private" type="checkbox"> Private?</label>
 
